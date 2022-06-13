@@ -56,7 +56,7 @@ public class Main {
                     }
 
                 }
-                System.err.println("カウント増加");
+                // System.err.println("カウント増加");
                 count++;
             } else {
                 System.err.println("2桁の整数を入力してください．");
