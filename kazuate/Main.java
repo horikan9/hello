@@ -12,17 +12,19 @@ public class Main {
         int count = 1;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String input;
-        int answer = -1;
+        int answer;
 
-        System.out.println("■数当てゲームを開始します．");
-        System.out.println("■2桁の正の整数を当ててください．");
-        System.out.println("■5回まで挑戦出来ます．");
-        System.out.println(num);
+        System.out.println("数当てゲームを開始します．");
+        System.out.println("2桁の正の整数を当ててください．");
+        System.out.println("5回まで挑戦出来ます．");
+        // System.out.println(num);
 
         while (count < 6) {
+            answer = -1;
+            System.out.println("");
             System.out.println("■" + count + "回目の挑戦");
 
-            System.out.println("■2桁の正の整数を入力してください");
+            System.out.println("2桁の正の整数を入力してください");
 
             try {
                 input = br.readLine();
@@ -36,20 +38,36 @@ public class Main {
             }
             if (answer > 9 && answer < 100) {
                 if (answer == num) {
-                    System.err.println("あたり！！");
-                    break;
+                    System.err.println("当たり！");
+                    System.err.println("終了します．");
+                    return;
                 } else if (answer > num) {
+                    System.err.println("外れです．");
+                    System.err.println(+answer + ">正解の数字");
+                    if (answer - num >= 20) {
+                        System.err.println("20以上離れています．");
+                    }
 
                 } else if (answer < num) {
+                    System.err.println("外れです．");
+                    System.err.println(+answer + "<正解の数字");
+                    if (num - answer >= 20) {
+                        System.err.println("20以上離れています．");
+                    }
 
                 }
+                System.err.println("カウント増加");
                 count++;
             } else {
-                System.err.println("■2桁の整数を入力してください．");
-                System.err.println("テスト");
+                System.err.println("2桁の整数を入力してください．");
+
             }
 
         }
-
+        System.err.println("");
+        System.err.println("入力回数が5回に達しました．");
+        System.err.println("挑戦失敗です．");
+        System.err.println("正解：" + num);
+        System.err.println("終了します．");
     }
 }
